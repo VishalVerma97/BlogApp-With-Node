@@ -4,7 +4,7 @@ const logger = require('../../utils/logger');
 
 router.route('/')
   .get(function(req, res) {
-    logger.log('Hey from user');
+    logger.log('Hey from category');
     res.send({ok: true});
   });
 
