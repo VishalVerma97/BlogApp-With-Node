@@ -1,12 +1,7 @@
 const postRouter = require('express').Router();
-const logger = require('../../utils/logger');
+const controller = require('./postController');
+let createRoutes = require('../../utils/createRoutes');
 
-
-postRouter.route('/')
-  .get(function(req, res) {
-    logger.log('Hey from posts');
-    res.send({ok: true});
-  });
-
+createRoutes(controller, postRouter);
 
 module.exports = postRouter;

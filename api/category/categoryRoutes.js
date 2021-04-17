@@ -1,12 +1,7 @@
 const router = require('express').Router();
-const logger = require('../../utils/logger');
+const controller = require('./categoryController');
+let createRoutes = require('../../utils/createRoutes');
 
-
-router.route('/')
-  .get(function(req, res) {
-    logger.log('Hey from category');
-    res.send({ok: true});
-  });
-
+createRoutes(controller, router);
 
 module.exports = router;

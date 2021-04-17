@@ -1,11 +1,8 @@
 const userRouter = require('express').Router();
-const logger = require('../../utils/logger');
+const controller = require('./userController');
+let createRoutes = require('../../utils/createRoutes');
 
-userRouter.route('/')
-  .get(function(req, res) {
-    logger.log('Hey from users');
-    res.send({ok: true});
-  });
+createRoutes(controller, userRouter);
 
 
 module.exports = userRouter;
