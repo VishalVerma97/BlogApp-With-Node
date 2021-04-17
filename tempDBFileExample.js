@@ -28,4 +28,31 @@ mongoose.connect('mongodb://localhost/puppies');
  *  required: true 
  * }
  * 
+ * Populating data
+ * 
+ * var doggSchema = new mongoose.Schema({
+ *  owner: {
+ *    type: mongoose.Schema.Types.ObjectId,
+ *    ref: 'person'
+ *  },
+ *  name: string 
+ * })
+ * 
+ * var personSchema = new mongoose.Schema({
+ *  name: string
+ * })
+ * 
+ * var dog = mongoose.model('dog', doggSchema)
+ * var person = mongoose.model('person', personSchema)
+ * 
+ * var promise = Dog.find({})
+ *    .populate('owner')
+ *    .exec();
+ * 
+ * promise.then(function(dogs) {
+ * },
+ * function(err) {
+ * 
+ * });
+ * 
  */
