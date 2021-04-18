@@ -22,6 +22,18 @@ let logger = {
       });
       console.log(args);
       consoleLog.apply(console, args);
+  },
+
+  error: function() {
+    var args = _.toArray(arguments)
+      .map(function(arg) {
+        arg = arg.stack || arg;
+        var name = arg.name || '[ ❌ ERROR ❌ ]';
+        var log = name.yellow + '  ' + arg.red;
+        return log;
+      });
+
+    consoleLog.apply(console, args);
   }
 }
 
