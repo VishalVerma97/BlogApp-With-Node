@@ -1,15 +1,12 @@
-const postRouter = require('express').Router();
-const controller = require('./postController');
-let createRoutes = require('../../utils/createRoutes');
+// const postRouter = require('express').Router();
+// const controller = require('./postController');
+// // let createRoutes = require('../../utils/createRoutes');
 
-createRoutes(controller, postRouter);
+// // createRoutes(controller, postRouter);
 
-module.exports = postRouter;
+// // module.exports = postRouter;
 
-/**
- * 
- * var router = require('express').Router();
-var logger = require('../../util/logger');
+var router = require('express').Router();
 var controller = require('./postController');
 var auth = require('../../auth/auth');
 
@@ -28,4 +25,3 @@ router.route('/:id')
   .delete(checkUser, controller.delete)
 
 module.exports = router;
- */

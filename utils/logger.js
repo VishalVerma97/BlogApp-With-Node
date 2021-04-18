@@ -29,7 +29,7 @@ let logger = {
       .map(function(arg) {
         arg = arg.stack || arg;
         var name = arg.name || '[ ❌ ERROR ❌ ]';
-        var log = name.yellow + '  ' + arg.red;
+        var log = name + '  ' + arg;
         return log;
       });
 

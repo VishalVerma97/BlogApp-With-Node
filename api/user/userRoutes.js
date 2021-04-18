@@ -1,18 +1,14 @@
-const userRouter = require('express').Router();
-const controller = require('./userController');
-let createRoutes = require('../../utils/createRoutes');
+// const userRouter = require('express').Router();
+// const controller = require('./userController');
+// // let createRoutes = require('../../utils/createRoutes');
 
-createRoutes(controller, userRouter);
-
-
-module.exports = userRouter;
+// // createRoutes(controller, userRouter);
 
 
-/***
- * 
- * 
- * var router = require('express').Router();
-var logger = require('../../util/logger');
+// // module.exports = userRouter;
+
+
+var router = require('express').Router();
 var controller = require('./userController');
 var auth = require('../../auth/auth');
 var checkUser = [auth.decodeToken(), auth.getFreshUser()];
@@ -32,4 +28,3 @@ router.route('/:id')
   .delete(checkUser, controller.delete)
 
 module.exports = router;
- */

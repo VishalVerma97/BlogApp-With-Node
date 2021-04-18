@@ -1,7 +1,7 @@
 var jwt = require('jsonwebtoken');
 var expressJwt = require('express-jwt');
 var config = require('../config/config');
-var checkToken = expressJwt({ secret: config.secrets.jwt });
+var checkToken = expressJwt({ secret: config.secrets.jwt, algorithms: ['HS256'] });
 var User = require('../api/user/userModel');
 
 exports.decodeToken = function() {
@@ -46,21 +46,21 @@ exports.getFreshUser = function() {
 
 exports.verifyUser = function() {
   return function(req, res, next) {
-    var username = req.body.username;
+    var userName = req.body.userName;
     var password = req.body.password;
 
-    // if no username or password then send
-    if (!username || !password) {
-      res.status(400).send('You need a username and password');
+    // if no userName or password then send
+    if (!userName || !password) {
+      res.status(400).send('You need a userName and password');
       return;
     }
 
     // look user up in the DB so we can check
-    // if the passwords match for the username
-    User.findOne({username: username})
+    // if the passwords match for the userName
+    User.findOne({userName: userName})
       .then(function(user) {
         if (!user) {
-          res.status(401).send('No user with the given username');
+          res.status(401).send('No user with the given userName');
         } else {
           // checking the passowords here
           if (!user.authenticate(password)) {
@@ -85,6 +85,6 @@ exports.signToken = function(id) {
   return jwt.sign(
     {_id: id},
     config.secrets.jwt,
-    {expiresInMinutes: config.expireTime}
+    {expiresIn: config.expireTime}
   );
 };

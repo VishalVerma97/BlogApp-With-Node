@@ -3,6 +3,7 @@ var _ = require('lodash');
 var signToken = require('../../auth/auth').signToken;
 
 exports.params = function(req, res, next, id) {
+  console.log('in params');
   User.findById(id)
     .select('-password')
     .exec()
@@ -54,6 +55,7 @@ exports.put = function(req, res, next) {
 
 exports.post = function(req, res, next) {
   var newUser = new User(req.body);
+  newUser.hashedPassword = newUser.encryptPassword(newUser.password);
 
   newUser.save(function(err, user) {
     if(err) { return next(err);}
@@ -74,5 +76,6 @@ exports.delete = function(req, res, next) {
 };
 
 exports.me = function(req, res) {
+  console.log('in me');
   res.json(req.user.toJson());
 };

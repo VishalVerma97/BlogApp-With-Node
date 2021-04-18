@@ -1,19 +1,13 @@
-const router = require('express').Router();
-const controller = require('./categoryController');
-let createRoutes = require('../../utils/createRoutes');
+// // const router = require('express').Router();
+// const controller = require('./categoryController');
+// // let createRoutes = require('../../utils/createRoutes');
 
-createRoutes(controller, router);
+// // createRoutes(controller, router);
 
-module.exports = router;
+// // module.exports = router;
 
 
-/***
- * 
- * 
- * 
- * 
 var router = require('express').Router();
-var logger = require('../../util/logger');
 var controller = require('./categoryController');
 var auth = require('../../auth/auth');
 
@@ -32,5 +26,3 @@ router.route('/:id')
   .delete(checkUser, controller.delete)
 
 module.exports = router;
- * 
- */
